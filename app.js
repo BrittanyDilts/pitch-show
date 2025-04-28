@@ -7,8 +7,7 @@ const pitchPoints = [
           "Located in Jasper National Park",
           "Stunning views at dusk",
           "Popular photography spot"
-        ],
-        "Maligne Lake, Alberta, Canada"
+        ]
       ]
     },
     {
@@ -19,8 +18,7 @@ const pitchPoints = [
           "Snow-capped peaks",
           "Crystal clear lake reflection",
           "Serene and untouched wilderness"
-        ],
-        "A perfect escape for nature lovers"
+        ]
       ]
     },
     {
@@ -31,8 +29,7 @@ const pitchPoints = [
           "Brilliant fall foliage",
           "Golden leaves carpeting the ground",
           "Crisp, fresh air"
-        ],
-        "Experience the beauty of seasonal change"
+        ]
       ]
     },
   ];
