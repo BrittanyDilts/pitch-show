@@ -86,21 +86,34 @@ const pitchPoints = [
     });
   }
   
+  let lastScrollY = window.scrollY;
+
   function onScroll() {
     const sections = document.querySelectorAll('.pitch-section');
-    let currentSection = sections[0];
-    let currentIndex = 0;
-  
-    // Find the section whose top is closest to (but not greater than) the top of the viewport
+    let scrollDown = window.scrollY > lastScrollY;
+    lastScrollY = window.scrollY;
+
+    let selectedIndex = 0;
+
     for (let i = 0; i < sections.length; i++) {
-      const rect = sections[i].getBoundingClientRect();
-      if (rect.top <= 0) {
-        currentSection = sections[i];
-        currentIndex = i;
+      const textDiv = sections[i].querySelector('.pitch-text');
+      const rect = textDiv.getBoundingClientRect();
+
+      if (scrollDown) {
+        // If scrolling down, switch when the bottom of the text box reaches the bottom of the viewport
+        if (rect.bottom >= 0 && rect.bottom <= window.innerHeight) {
+          selectedIndex = i;
+          break;
+        }
+      } else {
+        // If scrolling up, switch when the bottom of the text box reaches the top of the viewport
+        if (rect.bottom <= 0) {
+          selectedIndex = i + 1;
+        }
       }
     }
-  
-    setBackgroundImage(pitchPoints[currentIndex].src);
+
+    setBackgroundImage(pitchPoints[selectedIndex].src);
   }
   
   document.addEventListener('DOMContentLoaded', function() {
